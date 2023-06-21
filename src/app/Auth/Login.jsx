@@ -1,6 +1,10 @@
 import React from 'react'
 
 export default function Login() {
+  React.useEffect(()=>{
+    localStorage.setItem("authentication", true);
+  },[])
+  
   return (
     <div className="container-xxl">
     <div className="authentication-wrapper authentication-basic container-p-y">
