@@ -54,6 +54,13 @@ export default function Header() {
                     </NavLink>
                 </li>
 
+                <li className={`menu-item ${navUrl.includes("/schedule") ? "active" : ""}`}>
+                    <NavLink to="/schedules" className="menu-link">
+                        <i className="menu-icon tf-icons bx bxs-calendar"></i>
+                        <div data-i18n="Tables">Schedules</div>
+                    </NavLink>
+                </li>
+
                 <li className={`menu-item ${navUrl.includes("/employee") ? "active" : ""}`}>
                     <NavLink to="employee" className="menu-link">
                         <i className="menu-icon tf-icons bx bx-female"></i>
