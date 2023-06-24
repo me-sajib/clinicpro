@@ -10,6 +10,7 @@ const PageRoutes = [
     { path: "/doctors", element: <Doctors /> },
     { path: "/patients", element: <Patients /> },
     { path: "/schedules", element: <Schedules /> },
+    { path: "/employee", element: <Employee /> },
     { path: "/salary_sheet", element: <SalarySheets /> },
 ]
 
