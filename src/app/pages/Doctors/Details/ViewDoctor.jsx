@@ -3,7 +3,7 @@ import ShowDoctor from './Tabs/ShowDoctor'
 import EditDoctor from './Tabs/EditDoctor'
 
 export default function ViewDoctor() {
-  const [activeTab, setActiveTab] = useState('doctor')
+  const [activeTab, setActiveTab] = useState('doctor');
   return (
     <>
       <div className="nav-align-top mb-4">

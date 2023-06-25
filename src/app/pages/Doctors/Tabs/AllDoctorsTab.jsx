@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function AllDoctorsTab() {
     return (
@@ -62,7 +63,7 @@ export default function AllDoctorsTab() {
                             <td><span className="badge bg-label-info me-1">LMSC, DKKS</span></td>
                             <td>
                                 <div className="d-flex gap-2">
-                                    <button className='btn btn-primary btn-sm'>View</button>
+                                    <Link to="/doctors/3" className='btn btn-primary btn-sm'>View</Link>
                                     <button className='btn btn-danger btn-sm'>Delete</button>
 
                                 </div>

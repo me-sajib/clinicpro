@@ -27,35 +27,24 @@ export default function TopNavbar() {
                 </div>
 
                 <ul className="navbar-nav flex-row align-items-center ms-auto">
-                    <li className="nav-item lh-1 me-3">
-                        <a
-                            className="github-button"
-                            href="https://github.com/themeselection/sneat-html-admin-template-free"
-                            data-icon="octicon-star"
-                            data-size="large"
-                            data-show-count="true"
-                            aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-                        >Star</a
-                        >
-                    </li>
 
                     <li className="nav-item navbar-dropdown dropdown-user dropdown">
                         <a className="nav-link dropdown-toggle hide-arrow" href="#s" data-bs-toggle="dropdown">
                             <div className="avatar avatar-online">
-                                <img src="assets/img/avatars/1.png" alt="avatar image" className="w-px-40 h-auto rounded-circle" />
+                                <img src="/assets/img/avatars/1.png" alt="avatar" className="w-px-40 h-auto rounded-circle" />
                             </div>
                         </a>
                         <ul className="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="#s">
                                     <div className="d-flex">
                                         <div className="flex-shrink-0 me-3">
                                             <div className="avatar avatar-online">
-                                                <img src="assets/img/avatars/1.png" alt="avatar demo" className="w-px-40 h-auto rounded-circle" />
+                                                <img src="/assets/img/avatars/1.png" alt="avatar demo" className="w-px-40 h-auto rounded-circle" />
                                             </div>
                                         </div>
                                         <div className="flex-grow-1">
-                                            <span className="fw-semibold d-block">John Doe</span>
+                                            <span className="fw-semibold d-block">Sajib</span>
                                             <small className="text-muted">Admin</small>
                                         </div>
                                     </div>
@@ -65,19 +54,19 @@ export default function TopNavbar() {
                                 <div className="dropdown-divider"></div>
                             </li>
                             <li>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="#m">
                                     <i className="bx bx-user me-2"></i>
                                     <span className="align-middle">My Profile</span>
                                 </a>
                             </li>
                             <li>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="#s">
                                     <i className="bx bx-cog me-2"></i>
                                     <span className="align-middle">Settings</span>
                                 </a>
                             </li>
                             <li>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="#b">
                                     <span className="d-flex align-items-center align-middle">
                                         <i className="flex-shrink-0 bx bx-credit-card me-2"></i>
                                         <span className="flex-grow-1 align-middle">Billing</span>

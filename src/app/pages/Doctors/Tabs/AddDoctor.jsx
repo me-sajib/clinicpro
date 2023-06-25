@@ -1,11 +1,6 @@
-import React, { useState } from 'react'
-import DatePicker from 'react-multi-date-picker'
-import DatePanel from 'react-multi-date-picker/plugins/date_panel'
+import React from 'react'
 
 export default function AddDoctor() {
-  const [dates, setDates] = useState([
-    new Date()
-  ]);
 
   return (
     <div className="row">
@@ -13,17 +8,12 @@ export default function AddDoctor() {
         <div className="card mb-4">
           <div className="card-header d-flex justify-content-between align-items-center">
             <h5 className="mb-0">Add Doctor</h5>
-            <div className='d-flex gap-2'>
-              <label htmlFor="available">Available</label>
-              <DatePicker
-                value={dates}
-                onChange={setDates}
-                format="MMMM DD YYYY"
-                sort
-                plugins={[
-                  <DatePanel />
-                ]}
-              />
+            <div className='d-flex gap-2 align-items-center'>
+              <label htmlFor="status">Status</label>
+              <select name="status" id="" className='form-control'>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
             </div>
           </div>
           <div className="card-body">

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function AllPatients() {
     return (
@@ -58,7 +59,7 @@ export default function AllPatients() {
                         </td>
                         <td>
                             <div className="d-flex gap-2">
-                                <button className='btn btn-primary btn-sm'>View</button>
+                                <Link to="/patients/3" className='btn btn-primary btn-sm'>View</Link>
                                 <button className='btn btn-danger btn-sm'>Delete</button>
         
                             </div>
