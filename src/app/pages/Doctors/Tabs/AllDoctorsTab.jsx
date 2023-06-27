@@ -5,13 +5,14 @@ import Swal from 'sweetalert2';
 import { filtering_doctor, search_doctors } from '../../../../redux/doctors/actions/doctorActions';
 
 export default function AllDoctorsTab() {
-    const {doctors} = useSelector(state => state);
+    const { doctors } = useSelector(state => state);
     const dispatch = useDispatch();
     const [allDoctors, setDoctors] = useState(doctors);
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         setDoctors(doctors)
-    },[doctors])
+    }, [doctors])
+
     /**
      * handles filtering
      * @param {*} e event on filter selection option
@@ -77,7 +78,7 @@ export default function AllDoctorsTab() {
                 <div className="d-md-flex align-items-center gap-3">
                     <h5 className="table-header-title">All Doctors ({allDoctors.length})</h5>
                     <div className='py-3'>
-                        <select name="filtering" onChange={(e) => dispatch(filtering_doctor(e.target.value)) } id="filtering" className='form-control'>
+                        <select name="filtering" onChange={(e) => dispatch(filtering_doctor(e.target.value))} id="filtering" className='form-control'>
                             <option value="all">All</option>
                             <option value="active">Active</option>
                             <option value="Inactive">Inactive</option>
@@ -91,7 +92,7 @@ export default function AllDoctorsTab() {
                     <form className="d-flex">
                         <div className="input-group">
                             <span className="input-group-text"><i className="tf-icons bx bx-search"></i></span>
-                            <input name="search" id="search" onChange={(e)=> dispatch(search_doctors(e.target.value))} type="text" className="form-control" placeholder="Search..." />
+                            <input name="search" id="search" onChange={(e) => dispatch(search_doctors(e.target.value))} type="text" className="form-control" placeholder="Search..." />
                         </div>
                     </form>
                 </div>

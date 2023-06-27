@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import {  NavLink, useLocation } from 'react-router-dom'
 
-export default function Header() {    
+export default function Header({setNavbarExpand}) {    
     const [navUrl, setNavUrl] = useState("dashboard");
     const location = useLocation();
 
@@ -24,15 +24,15 @@ export default function Header() {
                     <span className="app-brand-text demo menu-text fw-bolder ms-2">ClinicPRO</span>
                 </a>
 
-                <a href="#s" className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                <p className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none" onClick={() => setNavbarExpand(false)}>
                     <i className="bx bx-chevron-left bx-sm align-middle"></i>
-                </a>
+                </p>
             </div>
 
             <div className="menu-inner-shadow"></div>
 
             <ul className="menu-inner py-1">
-                <li className={`menu-item ${navUrl.includes("/dashboard") ? "active" : ""}`}>
+                <li className={`menu-item ${navUrl.includes("/dashboard") ? "active" : ""}`} onClick={() => setNavbarExpand(false)}>
                     <NavLink to="/dashboard" className="menu-link">
                         <i className="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Dashboard</div>
@@ -40,35 +40,35 @@ export default function Header() {
                 </li>
 
                
-                <li className={`menu-item ${navUrl.includes("/doctor") ? "active" : ""}`}>
+                <li className={`menu-item ${navUrl.includes("/doctor") ? "active" : ""}`} onClick={() => setNavbarExpand(false)}>
                     <NavLink to="/doctors" className="menu-link">
                         <i className="menu-icon tf-icons bx bx-health"></i>
                         <div data-i18n="Tables">Doctors</div>
                     </NavLink>
                 </li>
 
-                <li className={`menu-item ${navUrl.includes("/patient") ? "active" : ""}`}>
+                <li className={`menu-item ${navUrl.includes("/patient") ? "active" : ""}`}  onClick={() => setNavbarExpand(false)}>
                     <NavLink to="/patients" className="menu-link">
                         <i className="menu-icon tf-icons bx bx-handicap"></i>
                         <div data-i18n="Tables">Patients</div>
                     </NavLink>
                 </li>
 
-                <li className={`menu-item ${navUrl.includes("/schedule") ? "active" : ""}`}>
+                <li className={`menu-item ${navUrl.includes("/schedule") ? "active" : ""}`} onClick={() => setNavbarExpand(false)}>
                     <NavLink to="/schedules" className="menu-link">
                         <i className="menu-icon tf-icons bx bxs-calendar"></i>
                         <div data-i18n="Tables">Schedules</div>
                     </NavLink>
                 </li>
 
-                <li className={`menu-item ${navUrl.includes("/employee") ? "active" : ""}`}>
+                <li className={`menu-item ${navUrl.includes("/employee") ? "active" : ""}`} onClick={() => setNavbarExpand(false)}>
                     <NavLink to="employee" className="menu-link">
                         <i className="menu-icon tf-icons bx bx-female"></i>
                         <div data-i18n="Tables">Employee</div>
                     </NavLink>
                 </li>
 
-                <li className={`menu-item ${navUrl.includes("/salary_sheet") ? "active" : ""}`}>
+                <li className={`menu-item ${navUrl.includes("/salary_sheet") ? "active" : ""}`} onClick={() => setNavbarExpand(false)}>
                     <NavLink to="/salary_sheet" className="menu-link">
                         <i className="menu-icon tf-icons bx bx-money"></i>
                         <div data-i18n="Tables">Salary Sheets</div>
