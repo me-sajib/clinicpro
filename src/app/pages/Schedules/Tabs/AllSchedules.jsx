@@ -6,7 +6,7 @@ export default function AllSchedules() {
         <div className="card">
             {/* table heading */}
             <div className="d-md-flex justify-content-between align-items-center p-3">
-                <div className="d-md-flex align-items-center gap-3">
+                <div className="mb-3">
                     <h5 className="table-header-title">All Schedules (03)</h5>
                 </div>
                 {/* search box */}

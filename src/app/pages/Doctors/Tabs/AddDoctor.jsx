@@ -60,14 +60,6 @@ export default function AddDoctor() {
           <div className="card mb-4">
             <div className="card-header d-flex justify-content-between align-items-center">
               <h5 className="mb-0">Add Doctor</h5>
-              <div className='d-flex gap-2 align-items-center'>
-                <label htmlFor="status">Status</label>
-                <select name="status" id="status" className='form-control'>
-                  <option value="active">Active</option>
-                  <option value="inactive">Inactive</option>
-                  <option value="out_of_clinic">Out of Clinic</option>
-                </select>
-              </div>
             </div>
             <div className="card-body">
 
@@ -113,14 +105,12 @@ export default function AddDoctor() {
                   />
                 </div>
                 <div className="col-md-6 mb-3">
-                  <label className="form-label" htmlFor="phone">Mobile Number 2</label>
-                  <input
-                    type="text"
-                    id="phone"
-                    name="mobile2"
-                    className="form-control phone-mask"
-                    placeholder="01XX-XXXXXXX"
-                  />
+                  <label htmlFor="status" className="form-label">Status</label>
+                  <select name="status" id="status" className='form-control'>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="out_of_clinic">Out of Clinic</option>
+                  </select>
                 </div>
               </div>
               <div className="mb-3">

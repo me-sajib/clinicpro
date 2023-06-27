@@ -35,7 +35,7 @@ export default function Dashboard() {
     <div className="row">
       {
         dashboardData.map((item, index) => (
-          <div className="col-lg-4 col-md-3">
+          <div className="col-lg-4 col-md-3 mb-3">
             <div className="card">
               <div className="card-body">
                 <div className="card-title d-flex align-items-start justify-content-between">
