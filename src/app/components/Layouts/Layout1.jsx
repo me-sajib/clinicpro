@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
 import TopNavbar from './TopNavBar'
 import { Outlet } from 'react-router-dom'
 
 export default function Layout1() {
   const [navbarExpand, setNavbarExpand] = useState(false);
-  useEffect(()=>{
-    console.log(navbarExpand)
-  },[navbarExpand])
+  
   return (
     <div className={`layout-wrapper layout-content-navbar ${navbarExpand ? 'layout-menu-expanded' : ""}`} >
     <div className="layout-container">

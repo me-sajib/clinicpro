@@ -1,67 +1,36 @@
-import React from 'react'
-import { useState } from 'react'
-import ShowPatient from './Tabs/ShowPatient'
+import React, { useState } from 'react'
 import EditPatient from './Tabs/EditPatient'
 import PatientDocument from './Tabs/PatientDocument'
+import { Link } from 'react-router-dom'
 
 export default function ViewPatient() {
-  const [activeTab, setActiveTab] = useState('patient')
+  const [activeTab, setActiveTab] = useState('')
   return (
     <>
-    <div className="nav-align-top mb-4">
-      <ul className="nav nav-pills mb-3" role="tablist">
-        <li className="nav-item">
-          <button
-            type="button"
-            className="nav-link active"
-            role="tab"
-            data-bs-toggle="tab"
-            data-bs-target="#navs-pills-top-home"
-            aria-controls="navs-pills-top-home"
-            aria-selected="true"
-            id='patient'
-            onClick={()=> setActiveTab('patient')}
-          >
-            Patient
-          </button>
-        </li>
-        <li className="nav-item">
-          <button
-            type="button"
-            className="nav-link"
-            role="tab"
-            data-bs-toggle="tab"
-            data-bs-target="#navs-pills-top-profile"
-            aria-controls="navs-pills-top-profile"
-            aria-selected="false"
-            id='edit-patient'
-            onClick={()=> setActiveTab('edit-patient')}
-          >
-            Edit Patient
-          </button>
-        </li>
-        <li className="nav-item">
-          <button
-            type="button"
-            className="nav-link"
-            role="tab"
-            data-bs-toggle="tab"
-            data-bs-target="#navs-pills-top-profile"
-            aria-controls="navs-pills-top-profile"
-            aria-selected="false"
-            id='documents'
-            onClick={()=> setActiveTab('documents')}
-          >
-            Documents
-          </button>
-        </li>
-      </ul>
-    </div>
+      {activeTab === 'edit-patient' ? <EditPatient setActiveTab={setActiveTab} /> : <div className="card p-3">
+        {/* table heading */}
+        <div className="d-flex justify-content-between align-items-center mb-3 ">
+          <Link className="btn-sm btn btn-info" to="/patients">Back</Link>
+          <button className="btn-sm btn btn-primary" onClick={() => setActiveTab('edit-patient')}>Edit Patient</button>
+        </div>
+        <h5>Patient Information</h5>
+        <div className="doctor-info py-3">
+          <h5>Jahid Islam</h5>
+          <div className="d-details">
+            <p className="visited"><b>Visited : </b> 3</p>
+            <p className="mobile"><b>Mobile : </b> 01988-383329</p>
+            <p className="blood"><b>Blood Group : </b> A+</p>
+            <p className="gender"><b>Gender : </b> Male</p>
+            <p className="age"><b>Age : </b> 24</p>
+            <p className="address"><b>Address : </b> Mohammadpur, Dhaka</p>
+          </div>
 
-    {activeTab === 'patient' && <ShowPatient />}
-    {activeTab === 'edit-patient' && <EditPatient />}
-    {activeTab === 'documents' && <PatientDocument />}
-   
-  </>
+        </div>
+
+        {/* patient documents  */}
+        <PatientDocument />
+      </div>}
+
+    </>
   )
 }

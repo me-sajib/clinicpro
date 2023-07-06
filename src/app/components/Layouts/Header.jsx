@@ -39,6 +39,12 @@ export default function Header({setNavbarExpand}) {
                     </NavLink>
                 </li>
 
+                <li className={`menu-item ${navUrl.includes("/schedule") ? "active" : ""}`} onClick={() => setNavbarExpand(false)}>
+                    <NavLink to="/schedules" className="menu-link">
+                        <i className="menu-icon tf-icons bx bxs-calendar"></i>
+                        <div data-i18n="Tables">Schedules</div>
+                    </NavLink>
+                </li>
                
                 <li className={`menu-item ${navUrl.includes("/doctor") ? "active" : ""}`} onClick={() => setNavbarExpand(false)}>
                     <NavLink to="/doctors" className="menu-link">
@@ -51,13 +57,6 @@ export default function Header({setNavbarExpand}) {
                     <NavLink to="/patients" className="menu-link">
                         <i className="menu-icon tf-icons bx bx-handicap"></i>
                         <div data-i18n="Tables">Patients</div>
-                    </NavLink>
-                </li>
-
-                <li className={`menu-item ${navUrl.includes("/schedule") ? "active" : ""}`} onClick={() => setNavbarExpand(false)}>
-                    <NavLink to="/schedules" className="menu-link">
-                        <i className="menu-icon tf-icons bx bxs-calendar"></i>
-                        <div data-i18n="Tables">Schedules</div>
                     </NavLink>
                 </li>
 

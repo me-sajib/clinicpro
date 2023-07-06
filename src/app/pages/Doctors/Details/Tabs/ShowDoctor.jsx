@@ -10,7 +10,7 @@ export default function ShowDoctor() {
                 </div>
             </div>
             <div className="doctor-info d-flex gap-5">
-                    <div className="doctor-image d-sm-done">
+                    <div className="doctor-image d-done">
                         <img src="/assets/img/avatars/1.png" alt="doctor view" />
                     </div>
                     <div className="doctor-info">

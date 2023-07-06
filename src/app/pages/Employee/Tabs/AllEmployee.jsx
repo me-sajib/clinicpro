@@ -22,7 +22,7 @@ export default function AllEmployee() {
               </td>
               <td>018-1234567</td>
               <td>
-                <td><span className="badge bg-label-warning me-1">De-active</span></td>
+                <span className="badge bg-label-warning me-1">De-active</span>
               </td>
               <td><span className="badge bg-label-info me-1">Report Manager</span></td>
               <td>
@@ -39,7 +39,7 @@ export default function AllEmployee() {
               </td>
               <td>01722-982016</td>
               <td>
-                <td><span className="badge bg-label-success me-1">Active</span></td>
+                <span className="badge bg-label-success me-1">Active</span>
               </td>
               <td><span className="badge bg-label-info me-1">Cleaner</span></td>
               <td>

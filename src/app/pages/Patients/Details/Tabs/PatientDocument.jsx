@@ -5,28 +5,8 @@ export default function PatientDocument() {
     return (
         <div className="card">
             {/* table heading */}
-            <div className="d-md-flex justify-content-between align-items-center p-3">
-                <div className="d-md-flex align-items-center gap-3">
-                    <h5 className="table-header-title">All Document (4)</h5>
-                    <div className='py-3'>
-                        <div className="">
-                            <button
-                                type="button"
-                                className="btn btn-info dropdown-toggle btn-sm"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                All Document
-                            </button>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#s">All Documents</a></li>
-                                <li><a className="dropdown-item" href="#s">Today's Documents</a></li>
-                                <li><a className="dropdown-item" href="#s">Active Documents</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
+            <div className="d-md-flex justify-content-between align-items-center">
+                <h5 className="table-header-title pb-2">All Document (4)</h5>
                 {/* search box */}
                 <div>
                     <form className="d-flex">
@@ -41,7 +21,6 @@ export default function PatientDocument() {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Patient ID</th>
                             <th>Doctor Name</th>
                             <th>Prescription</th>
                             <th>Date</th>
@@ -50,9 +29,7 @@ export default function PatientDocument() {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <strong>#493</strong>
-                            </td>
+
                             <td>Debashis Devnath</td>
                             <td>
                                 <img src="/assets/img/avatars/6.png" alt="document of patient" width="30" height="30" />
@@ -69,9 +46,7 @@ export default function PatientDocument() {
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <strong>#493</strong>
-                            </td>
+
                             <td>Debashis Devnath</td>
                             <td>
                                 Demo test
@@ -88,12 +63,10 @@ export default function PatientDocument() {
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <strong>#493</strong>
-                            </td>
+
                             <td>Debashis Devnath</td>
                             <td>
-                            <img src="/assets/img/avatars/6.png" alt=" document of patient" width="30" height="30" />
+                                <img src="/assets/img/avatars/6.png" alt=" document of patient" width="30" height="30" />
                             </td>
                             <td>
                                 <td><span className="badge bg-label-info me-1">12-02-2023</span></td>
@@ -107,12 +80,9 @@ export default function PatientDocument() {
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <strong>#493</strong>
-                            </td>
                             <td>Debashis Devnath</td>
                             <td>
-                            <img src="/assets/img/avatars/7.png" alt=" document of patient" width="30" height="30" />
+                                <img src="/assets/img/avatars/7.png" alt=" document of patient" width="30" height="30" />
                             </td>
                             <td>
                                 <td><span className="badge bg-label-info me-1">12-02-2023</span></td>
@@ -126,12 +96,9 @@ export default function PatientDocument() {
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <strong>#493</strong>
-                            </td>
                             <td>Debashis Devnath</td>
                             <td>
-                              <img src="/assets/img/avatars/1.png" alt=" document of patient" width="30" height="30" />
+                                <img src="/assets/img/avatars/1.png" alt=" document of patient" width="30" height="30" />
                             </td>
                             <td>
                                 <td><span className="badge bg-label-info me-1">12-02-2023</span></td>
@@ -144,17 +111,7 @@ export default function PatientDocument() {
                                 </div>
                             </td>
                         </tr>
-                        
                     </tbody>
-                    <tfoot className="table-border-bottom-0">
-                        <tr>
-                        <th>Patient ID</th>
-                            <th>Doctor Name</th>
-                            <th>Prescription</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

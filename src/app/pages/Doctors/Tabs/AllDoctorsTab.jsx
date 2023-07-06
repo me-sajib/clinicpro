@@ -102,6 +102,8 @@ export default function AllDoctorsTab() {
                 <table className="table">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" name="all_check" id="checked" className='form-checkbox' /></th>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Status</th>
@@ -112,7 +114,9 @@ export default function AllDoctorsTab() {
                     <tbody>
                         {
                             allDoctors.map((doctor, index) => <tr key={index}>
-                                <td>{doctor.name}</td>
+                                <td width={"5px"}><input type="checkbox" name="check[index]" className='form-checkbox' /> </td>
+                                <td width={"5px"}>{doctor.id}</td> 
+                                <td>{doctor.name}</td> 
                                 <td>{doctor.mobile}</td>
                                 <td>{doctor.status === "active" ? <span className="badge bg-label-success me-1">Active</span> : <span className="badge bg-label-danger me-1">Inactive</span>}</td>
                                 <td>{doctor.degree}</td>

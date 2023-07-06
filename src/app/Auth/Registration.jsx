@@ -1,8 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
 export default function Registration() {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [submitData, setSubmitData] = useState(false);
+  const [formData, setData] = useState([]);
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    const user_name = e.target.user_name.value;
+    const phone = e.target.phone.value;
+    const password = e.target.password.value;
+
+    if (user_name === "" || phone === "" || password === "") {
+      setError("Field must not be empty");
+      return;
+    } else {
+      setData({ user_name, phone, password });
+      setSubmitData(true)
+    }
+  }
+
+  // useEffect(() => {
+  //   if (submitData) {
+  //     fetch("http://localhost/3001/registration", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => console.log(data));
+
+  //   }
+  // }, [submitData])
+
   return (
     <div className="container-sm">
       <div className="authentication-wrapper authentication-basic container">
@@ -19,16 +53,16 @@ export default function Registration() {
               <h4 className="mb-2">Digitalize starts here 🚀</h4>
               <p className="mb-4">Make your Clinic management easy!</p>
 
-              <form id="formAuthentication" className="mb-3" action="/dashboard">
-                <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
+              <form id="formAuthentication" className="mb-3" action='/dashboard'>
+                <div className="mb-3">
+                  <label htmlFor="username" className="form-label">Username</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="username"
-                    name="username"
+                    name="user_name"
                     placeholder="Enter your username"
-                    autofocus
+                    autoFocus
                   />
                 </div>
                 <div className="mb-3">
@@ -37,7 +71,7 @@ export default function Registration() {
                     type="text"
                     className="form-control"
                     id="mobile"
-                    name="mobile"
+                    name="phone"
                     placeholder="Enter your mobile"
                     autoFocus
                   />
@@ -68,13 +102,13 @@ export default function Registration() {
                 <div className="mb-3">
                   <div className="form-check">
                     <input className="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                    <label className="form-check-label" for="terms-conditions">
+                    <label className="form-check-label" htmlFor="terms-conditions">
                       I agree to
                       <a href="j#s">privacy policy & terms</a>
                     </label>
                   </div>
                 </div>
-                <button className="btn btn-primary d-grid w-100">Sign up</button>
+                <button className="btn btn-primary d-grid w-100" type='submit'>Sign up</button>
               </form>
 
               <p className="text-center">

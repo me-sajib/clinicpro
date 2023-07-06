@@ -1,11 +1,11 @@
 import React from 'react'
-export default function EditPatient() {
+export default function EditPatient({ setActiveTab }) {
     return (
         <div className="row">
             <div className="col-xl">
                 <div className="card mb-4">
-                    <div className="card-header d-flex justify-content-between align-items-center">
-                        <h5 className="mb-0">Add Patient</h5>
+                    <div className="card-header">
+                        <h5 className="mb-0">Edit Patient</h5>
                     </div>
                     <div className="card-body">
                         <form>
@@ -60,7 +60,10 @@ export default function EditPatient() {
                                     placeholder="Doctor Address"
                                 ></textarea>
                             </div>
-                            <button type="submit" className="btn btn-primary">Save</button>
+                            <div className="d-flex gap-3 align-items-center">
+                                <button type="submit" className="btn btn-primary">Update</button>
+                                <button className='btn-sm btn btn-outline-warning' onClick={() => setActiveTab("")}>Cancel</button>
+                            </div>
                         </form>
                     </div>
                 </div>
