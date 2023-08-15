@@ -6,36 +6,40 @@ export default function Registration() {
   const [error, setError] = useState("");
   const [submitData, setSubmitData] = useState(false);
   const [formData, setData] = useState([]);
+
   const handleRegistration = (e) => {
     e.preventDefault();
-    const user_name = e.target.user_name.value;
+    const name = e.target.name.value;
     const phone = e.target.phone.value;
     const password = e.target.password.value;
 
-    if (user_name === "" || phone === "" || password === "") {
+    if (name === "" || phone === "" || password === "") {
       setError("Field must not be empty");
       return;
     } else {
-      setData({ user_name, phone, password });
-      setSubmitData(true)
+      setError("");
+      setData({ name, phone, password });
+      setSubmitData(true);
     }
   }
 
-  // useEffect(() => {
-  //   if (submitData) {
-  //     fetch("http://localhost/3001/registration", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
+  useEffect(() => {
+    if (submitData) {
+      fetch("http://localhost:3300/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
 
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => console.log(data));
-
-  //   }
-  // }, [submitData])
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+        setSubmitData(false)
+        });
+    }
+  }, [submitData])
 
   return (
     <div className="container-sm">
@@ -53,14 +57,14 @@ export default function Registration() {
               <h4 className="mb-2">Digitalize starts here 🚀</h4>
               <p className="mb-4">Make your Clinic management easy!</p>
 
-              <form id="formAuthentication" className="mb-3" action='/dashboard'>
+              <form id="formAuthentication" className="mb-3" onSubmit={handleRegistration}>
                 <div className="mb-3">
                   <label htmlFor="username" className="form-label">Username</label>
                   <input
                     type="text"
                     className="form-control"
                     id="username"
-                    name="user_name"
+                    name="name"
                     placeholder="Enter your username"
                     autoFocus
                   />

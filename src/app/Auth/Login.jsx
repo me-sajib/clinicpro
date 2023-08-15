@@ -1,12 +1,46 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [submitData, setSubmitData] = useState(false);
+  const [formData, setData] = useState([]);
 
-  React.useEffect(() => {
-    localStorage.setItem("authentication", true);
-  }, [])
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const phone = e.target.phone.value;
+    const password = e.target.password.value;
+
+    if (phone === "" || password === "") {
+      setError("Field must not be empty");
+      return;
+    } else {
+      setError("");
+      setData({phone, password });
+      setSubmitData(true);
+    }
+  }
+
+  useEffect(() => {
+    if (submitData) {
+      fetch("http://localhost:3300/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          
+          const {token} = data;
+          localStorage.setItem("access_token", token)
+        setSubmitData(false)
+        });
+    }
+  }, [submitData])
 
   return (
     <div className="container-sm">
@@ -24,14 +58,14 @@ export default function Login() {
               <h4 className="mb-2">Welcome to ClinicPRO! 👋</h4>
               <p className="mb-4">Please sign-in to your account</p>
 
-              <form id="formAuthentication" className="mb-3" action="/dashboard">
+              <form id="formAuthentication" className="mb-3" onSubmit={handleLogin}>
                 <div className="mb-3">
-                  <label htmlFor="mobile" className="form-label">Username or Mobile</label>
+                  <label htmlFor="mobile" className="form-label">Mobile Number</label>
                   <input
                     type="text"
                     className="form-control"
                     id="mobile"
-                    name="mobile-username"
+                    name="phone"
                     placeholder="Enter your mobile or username"
                     autoFocus
                   />
