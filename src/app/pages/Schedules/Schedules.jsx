@@ -4,9 +4,10 @@ import AllSchedules from './Tabs/AllSchedules';
 import AddSchedule from './Tabs/AddSchedule';
 
 export default function Schedules() {
-    const [activeTab, setActiveTab ] = useState('all-schedules');
-  return (
-    <>
+    const [activeTab, setActiveTab] = useState('all-schedules');
+    
+    return (
+        <>
             <div className="nav-align-top mb-4">
                 <ul className="nav nav-pills mb-3" role="tablist">
                     <li className="nav-item">
@@ -41,8 +42,8 @@ export default function Schedules() {
                     </li>
                 </ul>
             </div>
-            {activeTab === "all-schedules" && <AllSchedules/>}
-            {activeTab === "add-schedule" && <AddSchedule/>}
+            {activeTab === "all-schedules" && <AllSchedules />}
+            {activeTab === "add-schedule" && <AddSchedule />}
         </>
-  )
+    )
 }

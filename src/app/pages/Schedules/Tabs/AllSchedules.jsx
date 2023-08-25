@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 export default function AllSchedules() {
+    const [data, setData] = useState([]);
+
+
+    useEffect(() => {
+        fetch("http://localhost:3300/schedules/all")
+            .then(res => res.json())
+            .then(items => setData(items))
+    }, [])
+
     return (
         <div className="card">
             {/* table heading */}
@@ -32,72 +41,25 @@ export default function AllSchedules() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <strong>Wyazed Islam</strong>
-                            </td>
-                            <td>Ortho Predik</td>
-                            <td>
-                                <td><span className="badge bg-label-info me-1">Monday</span></td>
-                            </td>
-                            <td>
-                                <td>04:00PM - 06:00PM</td>
-                            </td>
-                            <td>
-                                <td><span className="badge bg-label-success me-1">Active</span></td>
-                            </td>
-                            <td>
-                                <div className="d-flex gap-2">
-                                    <Link to="/schedules/2" className='btn btn-primary btn-sm'>Edit</Link>
-                                    <button className='btn btn-danger btn-sm'>Delete</button>
-
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>Limon Islam</strong>
-                            </td>
-                            <td>Dental</td>
-                            <td>
-                                <td><span className="badge bg-label-info me-1">Monday</span></td>
-                            </td>
-                            <td>
-                                <td>04:00PM - 06:00PM</td>
-                            </td>
-                            <td>
-                                <td><span className="badge bg-label-success me-1">Active</span></td>
-                            </td>
-                            <td>
-                                <div className="d-flex gap-2">
-                                    <button className='btn btn-primary btn-sm'>View</button>
-                                    <button className='btn btn-danger btn-sm'>Delete</button>
-
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>Limon Islam</strong>
-                            </td>
-                            <td>Dental</td>
-                            <td>
-                                <td><span className="badge bg-label-info me-1">Monday</span></td>
-                            </td>
-                            <td>
-                                <td>04:00PM - 06:00PM</td>
-                            </td>
-                            <td>
-                                <td><span className="badge bg-label-success me-1">Active</span></td>
-                            </td>
-                            <td>
-                                <div className="d-flex gap-2">
-                                    <button className='btn btn-primary btn-sm'>View</button>
-                                    <button className='btn btn-danger btn-sm'>Delete</button>
-
-                                </div>
-                            </td>
-                        </tr>
+                        {
+                           data?.length > 0 && data?.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{item.doctor_name}</td>
+                                        <td>{item?.designation}</td>
+                                        <td>{item.day}</td>
+                                        <td>{item.time1} - {item.time2}</td>
+                                        <td>{item.status}</td>
+                                        <td>
+                                            <div className="d-flex gap-2">
+                                                <Link to="/schedules/2" className='btn btn-primary btn-sm'>Edit</Link>
+                                                <button className='btn btn-danger btn-sm'>Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
 
                     </tbody>
                     <tfoot className="table-border-bottom-0">
