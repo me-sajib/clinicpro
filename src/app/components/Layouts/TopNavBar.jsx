@@ -1,6 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function TopNavbar({ setNavbarExpand, navbarExpand }) {
+    const navigate = useNavigate();
+    const handleLogout = () =>{
+        localStorage.removeItem('access_token');
+        navigate('/');
+    }
     return (
         <nav
             className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
@@ -78,7 +84,7 @@ export default function TopNavbar({ setNavbarExpand, navbarExpand }) {
                                 <div className="dropdown-divider"></div>
                             </li>
                             <li>
-                                <a className="dropdown-item" href="auth-login-basic.html">
+                                <a className="dropdown-item" href="#logout" onClick={handleLogout}>
                                     <i className="bx bx-power-off me-2"></i>
                                     <span className="align-middle">Log Out</span>
                                 </a>

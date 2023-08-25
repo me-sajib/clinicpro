@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { validateNumber } from '../../Utils/validateNumber';
 
 export default function Login() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [submitData, setSubmitData] = useState(false);
@@ -11,13 +13,17 @@ export default function Login() {
     e.preventDefault();
     const phone = e.target.phone.value;
     const password = e.target.password.value;
-
+    // check phone number bangladeshi or not 
+    if (validateNumber(phone) === false) {
+      setError("Invalid Phone Number");
+      return;
+    }
     if (phone === "" || password === "") {
       setError("Field must not be empty");
       return;
     } else {
       setError("");
-      setData({phone, password });
+      setData({ phone, password });
       setSubmitData(true);
     }
   }
@@ -33,11 +39,15 @@ export default function Login() {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
-          
-          const {token} = data;
-          localStorage.setItem("access_token", token)
-        setSubmitData(false)
+          if (data.token) {
+            localStorage.setItem("access_token", data.token);
+            navigate("/dashboard");
+          } else {
+            setError(data.message);
+          }
+
+
+          setSubmitData(false)
         });
     }
   }, [submitData])
@@ -58,11 +68,15 @@ export default function Login() {
               <h4 className="mb-2">Welcome to ClinicPRO! 👋</h4>
               <p className="mb-4">Please sign-in to your account</p>
 
+              {
+                error && <div className="alert alert-danger">{error}</div>
+              }
+
               <form id="formAuthentication" className="mb-3" onSubmit={handleLogin}>
                 <div className="mb-3">
                   <label htmlFor="mobile" className="form-label">Mobile Number</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     id="mobile"
                     name="phone"
@@ -88,8 +102,8 @@ export default function Login() {
                     />
                     {/* password show and hide button */}
                     <span className="input-group-text cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
-                     {showPassword ? <i className="bx bx-show"></i> : <i className="bx bx-hide"></i>}
-                      </span>
+                      {showPassword ? <i className="bx bx-show"></i> : <i className="bx bx-hide"></i>}
+                    </span>
 
                   </div>
                 </div>

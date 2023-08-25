@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { validateNumber } from '../../Utils/validateNumber';
 
 export default function Registration() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [submitData, setSubmitData] = useState(false);
   const [formData, setData] = useState([]);
+  const navigate = useNavigate();
 
   const handleRegistration = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const phone = e.target.phone.value;
     const password = e.target.password.value;
+
+    // check phone number bangladeshi or not 
+    if(validateNumber(phone) === false) {
+      setError("Invalid Phone Number");
+      return;
+    }
 
     if (name === "" || phone === "" || password === "") {
       setError("Field must not be empty");
@@ -35,8 +44,18 @@ export default function Registration() {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
-        setSubmitData(false)
+          if (data.token) {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Registration Successful!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            localStorage.setItem("access_token", data.token);
+            navigate("/dashboard");
+          }
+          setSubmitData(false)
         });
     }
   }, [submitData])
@@ -57,6 +76,9 @@ export default function Registration() {
               <h4 className="mb-2">Digitalize starts here 🚀</h4>
               <p className="mb-4">Make your Clinic management easy!</p>
 
+              {
+                error && <div className="alert alert-danger">{error}</div>
+              }
               <form id="formAuthentication" className="mb-3" onSubmit={handleRegistration}>
                 <div className="mb-3">
                   <label htmlFor="username" className="form-label">Username</label>
@@ -72,7 +94,7 @@ export default function Registration() {
                 <div className="mb-3">
                   <label htmlFor="mobile" className="form-label">Mobile</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     id="mobile"
                     name="phone"
