@@ -78,15 +78,15 @@ export default function AddSchedule() {
 
                             <div className="row">
                                 <div className="col-md-4 mb-3">
-                                    <label htmlhtmlFor="starttime" className="form-label">Start Time</label>
+                                    <label htmlFor="starttime" className="form-label">Start Time</label>
                                     <input type="time" name="time1" className="form-control" id="starttime" />
                                 </div>
                                 <div className="col-md-4 mb-3">
-                                    <label htmlhtmlFor="endtime" className="form-label">End Time</label>
+                                    <label htmlFor="endtime" className="form-label">End Time</label>
                                     <input type="time" name="time2" className="form-control" id="endtime" />
                                 </div>
                                 <div className="col-md-4 mb-3">
-                                    <label htmlhtmlFor="status" className="form-label">Status</label>
+                                    <label htmlFor="status" className="form-label">Status</label>
                                     <select name="status" id="status" className='form-control'>
                                         <option value="active">Active</option>
                                         <option value="inactive">Inactive</option>

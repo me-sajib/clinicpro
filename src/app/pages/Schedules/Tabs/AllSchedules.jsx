@@ -8,8 +8,9 @@ export default function AllSchedules() {
     useEffect(() => {
         fetch("http://localhost:3300/schedules/all")
             .then(res => res.json())
-            .then(items => setData(items))
+            .then(items => setData(items.data))
     }, [])
+
 
     return (
         <div className="card">
@@ -47,7 +48,7 @@ export default function AllSchedules() {
                                     <tr key={index}>
                                         <td>{item.doctor_name}</td>
                                         <td>{item?.designation}</td>
-                                        <td>{item.day}</td>
+                                        <td>{item.date}</td>
                                         <td>{item.time1} - {item.time2}</td>
                                         <td>{item.status}</td>
                                         <td>
